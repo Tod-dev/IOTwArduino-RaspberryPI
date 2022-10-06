@@ -1,0 +1,27 @@
+<circuit reactStep="50" type="simulide_0.1" animate="0" noLinStep="10" speed="1000000" noLinAcc="5">
+ 
+Resistor-5: 
+<item Show_id="false" hflip="1" valLabelx="-16" vflip="1" itemtype="Resistor" x="-492" labelrot="0" id="Resistor-5" labelx="-12" rotation="0" Resistance="220" labely="-24" objectName="Resistor-5" y="-188" Show_res="true" Unit=" O" valLabely="6" valLabRot="0"/>
+ 
+Led-3: 
+<item Show_id="false" hflip="1" valLabelx="0" vflip="1" itemtype="Led" x="-716" labelrot="0" MaxCurrent="0.029999999999999999" id="Led-3" labelx="-16" rotation="0" Resistance="0.59999999999999998" labely="-24" objectName="Led-3" Threshold="2.3999999999999999" y="-236" Grounded="false" Color="0" valLabely="0" valLabRot="0"/>
+ 
+Arduino Uno-2: 
+<item Show_id="true" Ser_Port="true" hflip="1" valLabelx="0" vflip="1" itemtype="Arduino" x="-732" labelrot="0" id="Arduino Uno-2" labelx="0" rotation="0" Ser_Monitor="true" labely="-20" Mhz="16" objectName="Arduino Uno-2" Program="../../../AppData/Local/Temp/.arduinoIDE-unsaved202296-22284-5hpv1c.m4829/sketch_oct6a/build/arduino.avr.uno/sketch_oct6a.ino.hex" y="-164" valLabely="0" valLabRot="0"/>
+ 
+Connector-6: 
+<item Show_id="false" hflip="1" valLabelx="0" vflip="1" itemtype="Connector" x="-700" labelrot="0" id="Connector-6" labelx="-16" rotation="0" labely="-24" pointList="-700,-236,-516,-236,-516,-188,-508,-188" enodeid="enode-6" objectName="Connector-6" endpinid="Resistor-5-lPin" y="-236" startpinid="Led-3-rPin" valLabely="0" valLabRot="0"/>
+ 
+Connector-7: 
+<item Show_id="false" hflip="1" valLabelx="0" vflip="1" itemtype="Connector" x="-476" labelrot="0" id="Connector-7" labelx="-16" rotation="0" labely="-24" pointList="-476,-188,-476,-76,-580,-76" enodeid="enode-7" objectName="Connector-7" endpinid="Arduino Uno-2-GND2" y="-188" startpinid="Resistor-5-rPin" valLabely="0" valLabRot="0"/>
+ 
+Connector-8: 
+<item Show_id="false" hflip="1" valLabelx="0" vflip="1" itemtype="Connector" x="-732" labelrot="0" id="Connector-8" labelx="-16" rotation="0" labely="-24" pointList="-732,-236,-796,-236,-796,-36,-724,-36" enodeid="enode-8" objectName="Connector-8" endpinid="Arduino Uno-2-PB5" y="-236" startpinid="Led-3-lPin" valLabely="0" valLabRot="0"/>
+ 
+PlotterWidget: 
+<item font="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" focusPolicy="0" childrenRegion="" minimized="false" minimumHeight="200" acceptDrops="false" geometry="" windowModified="false" toolTipDuration="-1" updatesEnabled="true" enabled="true" frameSize="" MaxVolt="500" maximumWidth="1000" visible="false" MinVolt="-500" contextMenuPolicy="1" windowFilePath="" y="0" accessibleDescription="" maximumHeight="200" windowModality="0" windowOpacity="1" accessibleName="" maximumSize="" minimumSize="" layoutDirection="0" styleSheet="" toolTip="" windowIcon="" whatsThis="" itemtype="Plotter" frameGeometry="" sizePolicy="" modal="false" palette="" objectName="PlotterWidget" baseSize="" isActiveWindow="true" maximized="false" cursor="" focus="false" pos="" windowTitle="" statusTip="" windowIconText="" minimumSizeHint="" locale="" inputMethodHints="0" size="" normalGeometry="" rect="" height="200" minimumWidth="200" childrenRect="" width="200" autoFillBackground="false" fullScreen="false" x="0" sizeHint="" mouseTracking="false" sizeIncrement=""/>
+ 
+SerialPortWidget: 
+<item font="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" focusPolicy="0" childrenRegion="" minimized="false" minimumHeight="0" acceptDrops="false" geometry="" windowModified="false" toolTipDuration="-1" updatesEnabled="true" enabled="true" frameSize="" maximumWidth="450" visible="true" contextMenuPolicy="1" windowFilePath="" y="815" accessibleDescription="" maximumHeight="170" windowModality="0" windowOpacity="1" accessibleName="" maximumSize="" minimumSize="" layoutDirection="0" styleSheet="" SettingsProp="COM2,0,3,0,0,0" toolTip="" windowIcon="" whatsThis="" itemtype="SerialPort" frameGeometry="" sizePolicy="" modal="false" palette="" objectName="SerialPortWidget" baseSize="" isActiveWindow="true" maximized="false" cursor="" focus="false" pos="" windowTitle="Settings" statusTip="" windowIconText="" minimumSizeHint="" locale="" inputMethodHints="0" size="" normalGeometry="" rect="" height="170" minimumWidth="0" childrenRect="" width="289" autoFillBackground="false" fullScreen="false" x="526" sizeHint="" mouseTracking="false" sizeIncrement=""/>
+ 
+</circuit>
