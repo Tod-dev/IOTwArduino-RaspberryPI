@@ -1,10 +1,10 @@
 import serial
 import numpy as np
 
-PORT = 'COM5'
+PORT = 'COM2'
 
 
-class Bridge():
+class Bridge:
     def setup(self):
         self.ser = serial.Serial(PORT, 9600, timeout=0)
         # self.ser.open()
@@ -12,16 +12,17 @@ class Bridge():
         self.listOfValues = np.array([], dtype=np.int32)
 
     def loop(self):
-        while (True):
-            if self.ser.in_waiting >= 0:
+        while True:
+            if self.ser.in_waiting > 0:
                 # data available in serial port
                 # read one single byte
                 lastchar = self.ser.read(1)
-
+                print("\nByte received: ", lastchar)
                 # rebuild the packet
                 if lastchar == b'\xfe':
                     # EOL
                     print("\nValue received")
+                    print(self.inbuffer)
                     self.useData()
                     self.inbuffer = []
                 else:
@@ -37,12 +38,12 @@ class Bridge():
 
         numBytes = int.from_bytes(self.inbuffer[1], byteorder='little')
         for i in range(numBytes):
-            val = int.from_bytes(self.inbuffer[i+2], byteorder='little')
-            stringValue = "Senso %d: %d" % (i, val)
+            val = int.from_bytes(self.inbuffer[i + 2], byteorder='little')
+            stringValue = "Sensor%d: %d" % (i, val)
             print(stringValue)
 
 
-if __name__ == 'main':
-    br = Bridge()
-    br.setup()
-    br.loop()
+print("init")
+br = Bridge()
+br.setup()
+br.loop()
