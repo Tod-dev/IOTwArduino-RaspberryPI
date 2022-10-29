@@ -5,6 +5,7 @@ import serial.tools.list_ports
 
 import configparser
 
+#pip install paho-mqtt
 import paho.mqtt.client as mqtt
 
 

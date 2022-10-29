@@ -1,7 +1,14 @@
 import serial
 import numpy as np
 
-PORT = 'COM2'
+PORT = '/dev/pts/4'
+
+'''
+LINUX SETUP TO EMULATE SERIAL PORT:
+(terminal 1 ): open ports -> socat -d -d pty,raw,echo=0 pty,raw,echo=0
+(terminal 2 ): send package -> echo -n -e \\xff\\x02\\x0A\\x14\\xfe > /dev/pts/3
+(optional, test: terminal 3:) read data -> cat < /dev/pts/3
+'''
 
 
 class Bridge:
