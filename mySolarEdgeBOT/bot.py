@@ -80,10 +80,12 @@ def getDataFromSolarEdge(updater, forcePrint=False):
     sun = response.get('PV')
     battery = response.get('STORAGE')
     load = response.get('LOAD')
+    grid = response.get('GRID')
 
     sun_value = float(sun.get('currentPower'))
     battery_perc = int(battery.get('chargeLevel'))
     load_value = float(load.get('currentPower'))
+    grid_value = float(grid.get('currentPower'))
 
     connections = response.get('connections')
     sending_to_grid = False
@@ -114,22 +116,22 @@ def getDataFromSolarEdge(updater, forcePrint=False):
 
     if(not check): return
     #send message to the chat
-    sun_text = 'Sun Power 🌤️: {}kW, stato: {}'.format(sun_value,sun.get('status'))
-    battery_text = 'Battery% 🔋: {}%, stato: {}'.format(battery_perc,battery.get('status'))
-    load_text = 'Consumi 🏠: {}kW, stato: {}'.format(load_value,load.get('status'))
+    sun_text = 'Sun Power 🌤️: <b>{}kW</b>, stato: {}'.format(sun_value,sun.get('status'))
+    battery_text = 'Battery% 🔋: <b>{}%</b>, stato: {}'.format(battery_perc,battery.get('status'))
+    load_text = 'Consumi 🏠: <b>{}kW</b>, stato: {}'.format(load_value,load.get('status'))
 
     message = [sun_text,battery_text,load_text]
     message_txt = ''
     if(sending_to_grid):
-        message_txt += '⚠️Attenzione stai mandando energia in rete! Sfruttala ORA⚠️\n'
+        message_txt += '⚠️Attenzione stai mandando energia in rete, <b>{}kW</b>! Sfruttala ORA⚠️\n'.format(grid_value)
     message_txt += 'STATO ATTUALE:\n'
     message_txt += ('\n').join(message)
 
     print(message)
     if(hasattr(updater, 'bot')):
-        updater.bot.send_message(chat_id=chatID, text=message_txt)
+        updater.bot.send_message(chat_id=chatID, text=message_txt, parse_mode='HTML')
     else:
-        updater.message.reply_text(message_txt)
+        updater.message.reply_text(text=message_txt,parse_mode='HTML')
 
 
 
