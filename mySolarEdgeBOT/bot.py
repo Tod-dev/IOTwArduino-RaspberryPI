@@ -106,10 +106,7 @@ def getDataFromSolarEdge(updater, forcePrint=False):
     #check if we want to send the update
     print('hours:{}'.format(hours))
     check = False
-    if(hours >= 1 and sending_to_grid): 
-        ts = getTimestamp()
-        check = True
-    if(hours >= 4): 
+    if(hours >= 1 and sending_to_grid and grid_value > 0.3): 
         ts = getTimestamp()
         check = True
     if(forcePrint): check = True
@@ -122,7 +119,11 @@ def getDataFromSolarEdge(updater, forcePrint=False):
 
     message = [sun_text,battery_text,load_text]
     message_txt = ''
-    if(sending_to_grid):
+    
+    #alert troppa energia persa:
+    if(grid_value > 2):
+        message_txt += '🚨🚨🚨Troppa energia in rete: <b>{}kW</b> USALA!!🚨🚨🚨\n'.format(grid_value)
+    else:
         message_txt += '⚠️Attenzione stai mandando energia in rete, <b>{}kW</b>! Sfruttala ORA⚠️\n'.format(grid_value)
     message_txt += 'STATO ATTUALE:\n'
     message_txt += ('\n').join(message)
