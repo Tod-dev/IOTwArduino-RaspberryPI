@@ -110,8 +110,8 @@ def getDataFromSolarEdge(updater, forcePrint=False):
         ts = getTimestamp()
         check = True
     if(forcePrint): check = True
-
     if(not check): return
+
     #send message to the chat
     sun_text = 'Sun Power 🌤️: <b>{}kW</b>, stato: {}'.format(sun_value,sun.get('status'))
     battery_text = 'Battery% 🔋: <b>{}%</b>, stato: {}'.format(battery_perc,battery.get('status'))
@@ -119,16 +119,14 @@ def getDataFromSolarEdge(updater, forcePrint=False):
 
     message = [sun_text,battery_text,load_text]
     message_txt = ''
-    
-    #alert troppa energia persa:
-    if(grid_value > 2):
+    if(sending_to_grid and grid_value > 2):     #alert troppa energia sprecata:
         message_txt += '🚨🚨🚨Troppa energia in rete: <b>{}kW</b> USALA!!🚨🚨🚨\n'.format(grid_value)
-    else:
+    elif (sending_to_grid and grid_value > 0.5):
         message_txt += '⚠️Attenzione stai mandando energia in rete, <b>{}kW</b>! Sfruttala ORA⚠️\n'.format(grid_value)
     message_txt += 'STATO ATTUALE:\n'
     message_txt += ('\n').join(message)
-
     print(message)
+
     if(hasattr(updater, 'bot')):
         updater.bot.send_message(chat_id=chatID, text=message_txt, parse_mode='HTML')
     else:
