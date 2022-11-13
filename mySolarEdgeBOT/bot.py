@@ -28,7 +28,7 @@ def now(update, context):
 
 def help_command(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('/now per ricevere dati attuali\nLe notifiche imporanti te le mando io!')
+    update.message.reply_text('/now per ricevere dati attuali\nLe notifiche imporanti te le mando io!\nOgni ora se mandi in rete più di 0.3kW(con warning se > 0.5kW; con alert se > 2kW)')
 
 
 def startBot():
